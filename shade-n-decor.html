@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shade N Decor</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#007160;--brand2:#00bfa2;--bg:#f1f7f6;--surface:#fff;--ink:#12302b;--muted:#4f6b66;--line:#cfe0dc;--accent:#00bfa2;--accent-ink:#032a24;--slat:#bfe3dc;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1f1c;--surface:#12302b;--ink:#e6f4f1;--muted:#9cc0b9;--line:#1f4a43;--accent:#00bfa2;--accent-ink:#032a24;--slat:#1d5a50}}
+:root[data-theme="dark"]{--bg:#0b1f1c;--surface:#12302b;--ink:#e6f4f1;--muted:#9cc0b9;--line:#1f4a43;--accent:#00bfa2;--accent-ink:#032a24;--slat:#1d5a50}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.2rem,6vw,4rem)}h2{font-size:clamp(1.6rem,3.5vw,2.3rem)}h3{font-size:1.25rem}
+p{margin:0 0 1em;max-width:62ch}a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--brand);color:#fff;z-index:5}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;flex-wrap:wrap}
+.logo{font-family:Newsreader,Georgia,serif;font-size:1.4rem;font-weight:600;text-decoration:none}
+nav{display:flex;gap:18px;flex-wrap:wrap}nav a{text-decoration:none;color:#d9f2ee;font-weight:500;padding:4px 0;border-bottom:2px solid transparent}
+nav a:hover,nav a.on{color:#fff;border-color:var(--brand2)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);border:0;border-radius:6px;padding:11px 20px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn.wa{background:#1f8f4e;color:#fff}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+section{padding:48px 0}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:56px 0;background:var(--brand);color:#fff;box-shadow:0 0 0 100vmax var(--brand);clip-path:inset(0 -100vmax)}
+.hero .btn:not(.alt):not(.wa){background:#fff;color:#007160}.hero .btn.wa{background:#25d366;color:#04301a}.hero .ctl label{color:#d9f2ee}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+.window{border:10px solid #e9f6f3;border-radius:4px;background:linear-gradient(#bcd6e6,#e7f0f5);aspect-ratio:4/5;position:relative;overflow:hidden;max-width:380px;margin-left:auto}
+@media(max-width:760px){.window{margin:0 auto}}
+.slats{position:absolute;inset:0 0 auto 0;height:var(--h,60%);display:flex;flex-direction:column;transition:height .5s}
+.slats i{flex:1;background:var(--slat);border-bottom:2px solid var(--accent);min-height:6px}
+.ctl{max-width:380px;margin:12px 0 0 auto}.ctl label{font-size:.9rem;color:var(--muted)}.ctl input{width:100%;accent-color:var(--accent)}
+@media(max-width:760px){.ctl{margin:12px auto 0}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden;text-decoration:none;display:block}
+.card:hover{border-color:var(--accent)}
+.sw{height:150px}.card .in{padding:16px}.card p{color:var(--muted);margin:0;font-size:.95rem}
+.tag{color:var(--muted);font-size:.9rem}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:24px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:32px}@media(max-width:760px){.two{grid-template-columns:1fr}}
+form{display:grid;gap:14px}label{font-weight:500;display:grid;gap:4px}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px;width:100%}
+.note{color:var(--muted);font-size:.9rem}
+ul.f{padding-left:20px;margin:0 0 1em}
+footer{background:var(--brand);color:#d9f2ee;padding:32px 0}
+.pdp{display:grid;grid-template-columns:1fr 1fr;gap:36px}@media(max-width:760px){.pdp{grid-template-columns:1fr}}
+.pdp .sw{height:340px;border-radius:8px}
+.crumb{color:var(--muted);text-decoration:none;display:inline-block;margin-bottom:16px}
+.post{border-top:1px solid var(--line);padding:20px 0}.post a{text-decoration:none}
+body.inner{background:var(--brand);color:#fff}
+section{--sb:#007160;--st:#fff;--bb:#fff;--bt:#007160;background:var(--sb);color:var(--st);box-shadow:0 0 0 100vmax var(--sb);clip-path:inset(0 -100vmax)}
+section:nth-of-type(even),body:not(.inner) section:nth-of-type(odd){--sb:#00bfa2;--st:#00281f;--bb:#00281f;--bt:#fff}
+body:not(.inner) section:nth-of-type(even){--sb:#007160;--st:#fff;--bb:#fff;--bt:#007160}
+.panel,.card{color:var(--ink)}
+section .tag,.note,.crumb{color:inherit;opacity:.85}
+.card .tag{color:var(--muted);opacity:1}
+.post{border-color:rgba(0,40,31,.25)}
+section .btn{background:var(--bb);color:var(--bt)}
+section .btn.wa{background:#1f8f4e;color:#fff}
+section .btn.alt{background:transparent;color:inherit;border-color:currentColor}
+.two .panel{background:#00bfa2;color:#00281f;border:0}
+.two .panel input,.two .panel select,.two .panel textarea{background:#fff}
+.two .panel .btn{background:#00281f;color:#fff}
+.two .panel .btn.wa{background:#1f8f4e;color:#fff}
+footer{background:#007160;color:#fff;border-top:4px solid #00bfa2}
+header{border-bottom:4px solid #00bfa2}
+#mb{display:none;background:transparent;color:#fff;border:1.5px solid #fff;border-radius:6px;padding:6px 14px;font:inherit;font-weight:600;cursor:pointer}
+@media(max-width:760px){#mb{display:block}#nav{display:none;flex-basis:100%;flex-direction:column;gap:0;padding-bottom:8px}#nav.open{display:flex}#nav a{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.2)}}
+@media(prefers-reduced-motion:reduce){.slats{transition:none}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
+<script>
+var CFG={wa:"919999999999",email:"sales@shadendecor.example",phone:"+91 99999 99999",city:"Bengaluru"};
+// --------------------
+var P=[
+{id:"curtains",n:"Curtains",c:"Windows",s:"Made to your window size, in the fabric you pick.",d:"Stitched curtains in pleat styles to suit your room, with lining options for privacy and heat control.",f:["Eyelet, pinch pleat and wave heading","Cotton, linen, velvet and blends","Optional blackout lining"],g:"linear-gradient(135deg,#5d3d4a,#a96f7e)"},
+{id:"blinds",n:"Blinds",c:"Windows",s:"Roller, zebra and wooden styles for every room.",d:"Blinds control light and privacy with a clean look. Choose sheer for daylight, blackout for sleep, or layered designs for both.",f:["Sheer, light-filtering and blackout fabrics","Chain or motorised control","Fits inside or outside the window frame"],g:"repeating-linear-gradient(0deg,#e8e2d6 0 14px,#b9aa8e 14px 28px)"},
+{id:"awnings",n:"Awnings",c:"Outdoor",s:"Shade for balconies, windows, patios and shopfronts.",d:"Awnings keep sun and rain off outdoor spaces and cut heat at the window. Fixed and retractable types are available.",f:["Fixed and retractable designs","Weather-resistant fabrics","Manual or motorised operation"],g:"repeating-linear-gradient(90deg,#2f5d73 0 24px,#e9eef1 24px 48px)"},
+{id:"canopies",n:"Canopies",c:"Outdoor",s:"Covered areas for entrances, parking and outdoor seating.",d:"Canopies give shelter over doorways, car parks, terraces and event areas, built to suit the space.",f:["Made to the size of your space","Fabric and sheet options","Installation by our team"],g:"linear-gradient(135deg,#6b7f8c,#c3cfd6)"},
+{id:"insect-screens",n:"Insect screens",c:"Outdoor",s:"Keep mosquitoes and flies out and let air in.",d:"Insect screens fit windows and doors so you can keep them open for fresh air without insects.",f:["Fixed, sliding and hinged types","Fine mesh that keeps airflow","Fitted to your window and door sizes"],g:"repeating-linear-gradient(45deg,#8aa090 0 3px,#dfe8e1 3px 8px)"},
+{id:"floorings",n:"Floorings",c:"Interiors",s:"Floor finishes for homes and offices.",d:"Flooring options for living rooms, bedrooms and workspaces. We advise on material and fit it.",f:["Several material and finish options","Suited to homes and commercial spaces","Installation on request"],g:"repeating-linear-gradient(0deg,#9c6b3f 0 22px,#82552f 22px 24px)"},
+{id:"wallcoverings",n:"Wallcoverings",c:"Interiors",s:"Textures and patterns for feature walls.",d:"Wallcoverings for living rooms, bedrooms and offices. We prepare the wall and install it.",f:["Textured, floral and geometric designs","Washable options","Installation included on request"],g:"linear-gradient(135deg,#2e5a57,#7ba39c)"}];
+var S=[["Free site measurement","Our team visits, measures every window and notes the fitting surface so the order is right the first time."],["Design advice","Bring photos or plans. We suggest fabrics, colours and styles for your light and your budget."],["Made-to-measure production","Curtains, blinds, awnings, canopies and screens are made to your measurements, not adjusted from stock sizes."],["Installation","Our fitters install, test and clean up. We also fix and re-hang existing shades."]];
+var B=[{id:"measure-guide",t:"How to measure your windows before we visit",dt:"12 Nov 2026",x:["Measure the width at the top, middle and bottom of the window and use the smallest number for an inside fit.","Measure the height on the left, centre and right. For an outside fit, add 10 cm on each side so light does not leak around the edges.","Our team re-checks every measurement on site, so treat yours as a guide."]},{id:"blackout-vs-sheer",t:"Blackout, light-filtering or sheer: which fabric for which room",dt:"28 Oct 2026",x:["Bedrooms usually need blackout. Living rooms often work best with light-filtering fabric, which softens sunlight without darkening the room.","Dual-layer shades such as zebra blinds give you both options in one product."]},{id:"festive-refresh",t:"Festive season refresh: new curtains and wallcoverings in a week",dt:"10 Oct 2026",x:["Planning to redo a room before guests arrive? Book a visit early so measurement, production and installation all fit before the date."]}];
+
+var useState=React.useState,useEffect=React.useEffect,useRef=React.useRef,F=React.Fragment;
+var html=htm.bind(React.createElement);
+var wa=function(t){return "https://wa.me/"+CFG.wa+"?text="+encodeURIComponent(t)};
+var mail=function(s,t){return "mailto:"+CFG.email+"?subject="+encodeURIComponent(s)+"&body="+encodeURIComponent(t)};
+var cats=["Windows","Outdoor","Interiors"];
+var links=[["products","Products"],["services","Services"],["visit","Book a visit"],["blog","Updates"],["contact","Contact"]];
+var ALL="Awnings, curtains, blinds, canopies, floorings, insect screens and wallcoverings";
+
+function useHash(){
+  var s=useState(location.hash.replace("#","")||"home"),h=s[0],set=s[1];
+  useEffect(function(){var f=function(){set(location.hash.replace("#","")||"home")};window.addEventListener("hashchange",f);return function(){window.removeEventListener("hashchange",f)}},[]);
+  return h;
+}
+
+function Card(props){var p=props.p;
+  return html`<a className="card" href=${"#"+p.id}><div className="sw" style=${{background:p.g}}></div><div className="in"><span className="tag">${p.c}</span><h3>${p.n}</h3><p>${p.s}</p></div></a>`}
+
+function Panels(){return S.map(function(s){return html`<div className="panel" key=${s[0]}><h3>${s[0]}</h3><p>${s[1]}</p></div>`})}
+
+function PostList(props){return B.slice(0,props.n||9).map(function(b){return html`<div className="post" key=${b.id}><span className="tag">${b.dt}</span><h3><a href=${"#"+b.id}>${b.t}</a></h3></div>`})}
+
+function Blind(){
+  var s=useState(60),v=s[0],set=s[1];
+  return html`<div>
+    <div className="window" aria-hidden="true"><div className="slats" style=${{"--h":v+"%"}}>${Array.from({length:14},function(_,i){return html`<i key=${i}></i>`})}</div></div>
+    <div className="ctl"><label htmlFor="rg">Try it: lower the blind</label><input id="rg" type="range" min="0" max="100" value=${v} onChange=${function(e){set(Number(e.target.value))}}/></div>
+  </div>`}
+
+function Home(){
+  return html`<${F}>
+    <div className="hero"><div>
+      <h1>Shade and decor for your home and business, measured and fitted.</h1>
+      <p>${ALL} in ${CFG.city}. Book a free site visit and we will measure your windows and show fabrics in your own light.</p>
+      <div className="row"><a className="btn" href="#visit">Book a free visit</a><a className="btn wa" href=${wa("Hello Shade N Decor, I would like to know more.")} target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+    </div><${Blind}/></div>
+    <section><h2>Our products</h2><div className="grid">${P.slice(0,3).map(function(p){return html`<${Card} key=${p.id} p=${p}/>`})}</div><p style=${{marginTop:20}}><a className="btn alt" href="#products">See all products</a></p></section>
+    <section><h2>How it works</h2><div className="grid"><${Panels}/></div></section>
+    <section><h2>Latest updates</h2><${PostList} n=${2}/></section>
+  <//>`}
+
+function Products(){
+  return html`<${F}><section><h1>Products</h1></section>${cats.map(function(c){return html`<section key=${c}><h2>${c}</h2><div className="grid">${P.filter(function(p){return p.c===c}).map(function(p){return html`<${Card} key=${p.id} p=${p}/>`})}</div></section>`})}<//>`}
+
+function Product(props){var p=props.p;
+  return html`<section><a className="crumb" href="#products">Back to products</a>
+    <div className="pdp"><div className="sw" style=${{background:p.g}}></div><div>
+      <span className="tag">${p.c}</span><h1 style=${{fontSize:"2.4rem"}}>${p.n}</h1><p>${p.d}</p>
+      <ul className="f">${p.f.map(function(x){return html`<li key=${x}>${x}</li>`})}</ul>
+      <p className="note">Prices depend on size and fabric. Send an enquiry and we will quote after measurement.</p>
+      <div className="row"><a className="btn" href=${"#enquiry/"+p.id}>Enquire about this product</a><a className="btn wa" target="_blank" rel="noopener" href=${wa("Hello Shade N Decor, I am interested in "+p.n+".")}>WhatsApp us</a></div>
+    </div></div></section>`}
+
+function Form(props){
+  var ref=useRef();
+  function go(t){var f=ref.current;if(!f.reportValidity())return;var lines=[];
+    new FormData(f).forEach(function(v,k){if(v)lines.push(k+": "+v)});
+    if(t==="wa")window.open(wa(props.title+"\n"+lines.join("\n")),"_blank");
+    else location.href=mail(props.title,"Hello Shade N Decor,\n\n"+lines.join("\n"))}
+  return html`<form ref=${ref} onSubmit=${function(e){e.preventDefault()}}>${props.children}
+    <div className="row"><button type="button" className="btn" onClick=${function(){go("mail")}}>${props.mailLabel}</button><button type="button" className="btn wa" onClick=${function(){go("wa")}}>${props.waLabel}</button></div></form>`}
+
+function Enquiry(props){
+  return html`<section className="two"><div><h1>Product enquiry</h1><p>Tell us what you are looking for. Send it to our sales team by email or WhatsApp.</p></div>
+    <div className="panel"><${Form} key=${props.pid} title="Product enquiry" mailLabel="Send by email" waLabel="Send on WhatsApp">
+      <label>Product<select name="Product" defaultValue=${(P.find(function(p){return p.id===props.pid})||{}).n||P[0].n}>${P.map(function(p){return html`<option key=${p.id}>${p.n}</option>`})}</select></label>
+      <label>Your name<input name="Name" required autoComplete="name"/></label>
+      <label>Phone<input name="Phone" type="tel" required autoComplete="tel"/></label>
+      <label>Email<input name="Email" type="email" autoComplete="email"/></label>
+      <label>Number of windows or area<input name="Size" placeholder="e.g. 4 windows"/></label>
+      <label>Message<textarea name="Message" rows="3"></textarea></label>
+    <//></div></section>`}
+
+function Visit(){
+  return html`<section className="two"><div><h1>Book a free site visit</h1><p>We measure your windows, show fabric samples and give you a quote. Pick a date and time that suits you and we will confirm by phone.</p></div>
+    <div className="panel"><${Form} title="Site visit request" mailLabel="Request by email" waLabel="Request on WhatsApp">
+      <label>Your name<input name="Name" required autoComplete="name"/></label>
+      <label>Phone<input name="Phone" type="tel" required autoComplete="tel"/></label>
+      <label>Address for the visit<textarea name="Address" rows="2" required></textarea></label>
+      <label>Preferred date<input name="Date" type="date" required/></label>
+      <label>Preferred time<select name="Time"><option>Morning (9 am to 12 pm)</option><option>Afternoon (12 pm to 4 pm)</option><option>Evening (4 pm to 7 pm)</option></select></label>
+      <label>Visit type<select name="Type"><option>Site measurement</option><option>Design consultation</option><option>Measurement and consultation</option></select></label>
+    <//></div></section>`}
+
+function Services(){
+  return html`<${F}><section><h1>Services</h1><p>Everything from the first measurement to the final fitting.</p></section>
+    <section><div className="grid"><${Panels}/></div><p style=${{marginTop:24}}><a className="btn" href="#visit">Book a free visit</a></p></section><//>`}
+
+function Blog(){return html`<${F}><section><h1>Company updates and blog</h1></section><section><${PostList}/></section><//>`}
+
+function Post(props){var b=props.b;
+  return html`<section><a className="crumb" href="#blog">Back to updates</a><span className="tag" style=${{display:"block"}}>${b.dt}</span><h1>${b.t}</h1>${b.x.map(function(x,i){return html`<p key=${i}>${x}</p>`})}<p><a className="btn" href="#visit">Book a free visit</a></p></section>`}
+
+function Contact(){
+  return html`<section className="two"><div><h1>Contact our sales team</h1><p>Call, message or write. We reply within one working day.</p>
+    <div className="row"><a className="btn wa" target="_blank" rel="noopener" href=${wa("Hello Shade N Decor, I have a question.")}>WhatsApp</a><a className="btn alt" href=${"mailto:"+CFG.email}>Email us</a><a className="btn alt" href=${"tel:"+CFG.phone.replace(/\s/g,"")}>Call ${CFG.phone}</a></div></div>
+    <div className="panel"><${Form} title="Website message" mailLabel="Send by email" waLabel="Send on WhatsApp">
+      <label>Your name<input name="Name" required/></label>
+      <label>Phone or email<input name="Contact" required/></label>
+      <label>Message<textarea name="Message" rows="4" required></textarea></label>
+    <//></div></section>`}
+
+var simple={products:Products,services:Services,visit:Visit,blog:Blog,contact:Contact};
+
+function App(){
+  var h=useHash(),o=useState(false),open=o[0],setOpen=o[1];
+  var parts=h.split("/"),k=parts[0];
+  var p=P.find(function(x){return x.id===k}),b=B.find(function(x){return x.id===k});
+  var node=html`<${Home}/>`,nav="",home=true;
+  if(p){node=html`<${Product} p=${p}/>`;nav="products";home=false}
+  else if(b){node=html`<${Post} b=${b}/>`;nav="blog";home=false}
+  else if(k==="enquiry"){node=html`<${Enquiry} pid=${parts[1]}/>`;nav="products";home=false}
+  else if(simple[k]){var C=simple[k];node=html`<${C}/>`;nav=k;home=false}
+  useEffect(function(){window.scrollTo(0,0);setOpen(false)},[h]);
+  useEffect(function(){document.body.classList.toggle("inner",!home)},[home]);
+  return html`<${F}>
+    <header><div className="wrap bar">
+      <a className="logo" href="#home">Shade N Decor</a>
+      <button id="mb" type="button" aria-label="Menu" aria-expanded=${open} aria-controls="nav" onClick=${function(){setOpen(!open)}}>Menu</button>
+      <nav id="nav" className=${open?"open":""}>${links.map(function(l){return html`<a key=${l[0]} href=${"#"+l[0]} className=${nav===l[0]?"on":""}>${l[1]}</a>`})}</nav>
+    </div></header>
+    <main className="wrap" id="app">${node}</main>
+    <footer><div className="wrap"><strong>Shade N Decor</strong><br/>${ALL}, measured and fitted by our team.<br/>${CFG.phone} · ${CFG.email}</div></footer>
+  <//>`}
+
+ReactDOM.createRoot(document.getElementById("root")).render(html`<${App}/>`);
+</script>
+</body>
+</html>
